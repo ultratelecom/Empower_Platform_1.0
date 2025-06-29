@@ -95,8 +95,39 @@ export default function SplashPage() {
             </div>
           </div>
 
+          {/* Topics Preview Section */}
+          <div className="mt-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-3 text-center">Topics We'll Cover:</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Website Design</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Collect Royalties</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Music Production</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Brand Building</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Social Media</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Copyright Law</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Live Performance</span>
+              </div>
+              <div className="bg-purple-50 px-3 py-2 rounded-lg">
+                <span className="text-sm font-medium text-purple-800">Business Skills</span>
+              </div>
+            </div>
+          </div>
+
           {/* Bottom: Quick Stats or CTA */}
-          <div className="text-center mt-6">
+          <div className="text-center mt-4">
             <p className="text-sm text-gray-500">
               &copy; 2025 EMPOWER - Tobago Creative Development Program • Made in Tobago with ❤️
             </p>
