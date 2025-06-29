@@ -1,14 +1,39 @@
 'use client';
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { mockCurrentUser } from '../../lib/mockUser'
-import { getAllModules } from '../../lib/lessonFlow'
+import { FileUpload } from '../../components/ui'
 
 export default function DashboardPage() {
-  const user = mockCurrentUser
-  const modules = getAllModules()
-  const firstName = user.name.split(' ')[0]
+  const [form, setForm] = useState({
+    fullName: '',
+    stageName: '',
+    photos: [] as File[],
+    instagram: '',
+    youtube: '',
+    spotify: '',
+    apple: '',
+    website: '',
+    managerContact: ''
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, files } = e.target
+    if (files) {
+      setForm({ ...form, [name]: Array.from(files) })
+    } else {
+      setForm({ ...form, [name]: value })
+    }
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Form submitted:', form)
+    // Redirect to masterclasses page after successful submission
+    window.location.href = '/masterclasses'
+  }
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -16,145 +41,187 @@ export default function DashboardPage() {
       <header className="border-b border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-semibold text-gray-900">
-              VocalTraining
-            </Link>
+            <div className="flex items-center">
+              <img src="/logo.png" alt="EMPOWER Logo" className="h-20 w-auto" />
+            </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">Welcome, {firstName}</span>
+              <span className="text-sm text-gray-600">Welcome, Artist</span>
               <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-medium">{firstName[0]}</span>
+                <span className="text-white text-sm font-medium">A</span>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Progress Overview */}
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        {/* Artist Profile Upload Section */}
         <div className="mb-12">
-          <h1 className="text-3xl font-light text-gray-900 mb-2">Welcome to Shantal's Vocal Class</h1>
-          <p className="text-gray-600 mb-8">Continue building your vocal skills through structured modules</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Artist Profile Upload</h2>
+          <p className="text-gray-600 mb-8">Complete your profile to unlock masterclasses and grow your career</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="font-medium text-gray-900">Completed</h3>
-                <span className="text-2xl font-light text-purple-600">{user.progress.lessonsCompleted}</span>
+          <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name
+                </label>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  placeholder="Enter your full name"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.fullName}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <p className="text-sm text-gray-600 mt-1">Lessons finished</p>
-            </div>
-            
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="font-medium text-gray-900">Streak</h3>
-                <span className="text-2xl font-light text-orange-500">{user.progress.currentStreak}</span>
+              
+              <div>
+                <label htmlFor="stageName" className="block text-sm font-medium text-gray-700 mb-2">
+                  Stage Name / Artist Name
+                </label>
+                <input
+                  id="stageName"
+                  name="stageName"
+                  type="text"
+                  placeholder="Enter your artist name"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.stageName}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <p className="text-sm text-gray-600 mt-1">Days practicing</p>
             </div>
-            
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="font-medium text-gray-900">Practice Time</h3>
-                <span className="text-2xl font-light text-green-500">{user.progress.totalPracticeHours}h</span>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Professional Photos (2-3 photos)
+              </label>
+              <FileUpload
+                onFilesChange={(files) => setForm({ ...form, photos: files })}
+                accept="image/*"
+                multiple={true}
+                maxFiles={3}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="instagram" className="block text-sm font-medium text-gray-700 mb-2">
+                  Instagram Handle
+                </label>
+                <input
+                  id="instagram"
+                  name="instagram"
+                  type="text"
+                  placeholder="@yourusername"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.instagram}
+                  onChange={handleChange}
+                />
               </div>
-              <p className="text-sm text-gray-600 mt-1">Total hours</p>
+              
+              <div>
+                <label htmlFor="youtube" className="block text-sm font-medium text-gray-700 mb-2">
+                  YouTube Link
+                </label>
+                <input
+                  id="youtube"
+                  name="youtube"
+                  type="url"
+                  placeholder="https://youtube.com/..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.youtube}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="spotify" className="block text-sm font-medium text-gray-700 mb-2">
+                  Spotify Link
+                </label>
+                <input
+                  id="spotify"
+                  name="spotify"
+                  type="url"
+                  placeholder="https://open.spotify.com/..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.spotify}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="apple" className="block text-sm font-medium text-gray-700 mb-2">
+                  Apple Music Link
+                </label>
+                <input
+                  id="apple"
+                  name="apple"
+                  type="url"
+                  placeholder="https://music.apple.com/..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.apple}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-2">
+                  Personal Website
+                </label>
+                <input
+                  id="website"
+                  name="website"
+                  type="url"
+                  placeholder="https://yourwebsite.com"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.website}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="managerContact" className="block text-sm font-medium text-gray-700 mb-2">
+                  Manager Contact Info
+                </label>
+                <input
+                  id="managerContact"
+                  name="managerContact"
+                  type="text"
+                  placeholder="manager@email.com or phone"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  value={form.managerContact}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="pt-4 space-y-3">
+              <button
+                type="submit"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              >
+                Submit Profile
+              </button>
+              <button
+                type="button"
+                onClick={() => window.location.href = '/masterclasses'}
+                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              >
+                Skip for now - Go to Masterclasses
+              </button>
+            </div>
+          </form>
         </div>
 
-        {/* Course Modules */}
-        <div className="mb-12">
-          <h2 className="text-xl font-medium text-gray-900 mb-6">Course Modules</h2>
-          <div className="space-y-8">
-            {modules.map((module) => (
-              <div key={module.module} className="bg-white border border-gray-200 rounded-lg p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Module {module.module}: {module.title}
-                    </h3>
-                    <p className="text-sm text-gray-600">{module.lessons.length} lessons</p>
-                  </div>
-                  <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
-                    Module {module.module}
-                  </span>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {module.lessons.map((lesson) => (
-                    <Link
-                      key={lesson.id}
-                      href={`/module/${module.module}/${lesson.id}`}
-                      className="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                          lesson.type === 'intro' 
-                            ? 'bg-blue-100 text-blue-600' 
-                            : 'bg-orange-100 text-orange-600'
-                        }`}>
-                          <span className="text-sm">
-                            {lesson.type === 'intro' ? '📖' : '📝'}
-                          </span>
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-medium text-gray-900 text-sm group-hover:text-purple-600 transition-colors">
-                            {lesson.title}
-                          </p>
-                          <p className="text-xs text-gray-500 capitalize">
-                            {lesson.type}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="mb-12">
-          <h2 className="text-xl font-medium text-gray-900 mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Link
-              href="/module/1/1-intro"
-              className="bg-purple-600 text-white p-6 rounded-lg hover:bg-purple-700 transition-colors group"
-            >
-              <div className="text-2xl mb-3">🎤</div>
-              <h3 className="font-medium mb-1">Start Module 1</h3>
-              <p className="text-sm text-purple-100">Begin your vocal journey</p>
-            </Link>
-            
-            <Link
-              href="/assignment/1a"
-              className="bg-white border border-gray-200 p-6 rounded-lg hover:bg-gray-50 transition-colors group"
-            >
-              <div className="text-2xl mb-3">📝</div>
-              <h3 className="font-medium mb-1 text-gray-900">Assignments</h3>
-              <p className="text-sm text-gray-600">Submit your latest work</p>
-            </Link>
-            
-            <Link
-              href="/peer"
-              className="bg-white border border-gray-200 p-6 rounded-lg hover:bg-gray-50 transition-colors group"
-            >
-              <div className="text-2xl mb-3">👥</div>
-              <h3 className="font-medium mb-1 text-gray-900">Peer Review</h3>
-              <p className="text-sm text-gray-600">Give feedback to classmates</p>
-            </Link>
-            
-            <Link
-              href="/admin"
-              className="bg-white border border-gray-200 p-6 rounded-lg hover:bg-gray-50 transition-colors group"
-            >
-              <div className="text-2xl mb-3">📊</div>
-              <h3 className="font-medium mb-1 text-gray-900">Admin</h3>
-              <p className="text-sm text-gray-600">View detailed analytics</p>
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   )
