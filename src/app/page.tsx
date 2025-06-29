@@ -98,7 +98,7 @@ export default function SplashPage() {
           {/* Bottom: Quick Stats or CTA */}
           <div className="text-center mt-6">
             <p className="text-sm text-gray-500">
-              &copy; 2024 EMPOWER - Tobago Creative Development Program
+              &copy; 2025 EMPOWER - Tobago Creative Development Program • Made in Tobago with ❤️
             </p>
           </div>
         </div>
