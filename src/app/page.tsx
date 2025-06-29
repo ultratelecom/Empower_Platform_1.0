@@ -35,7 +35,7 @@ export default function SplashPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-start mb-4">
             
             {/* Left: Registration Form */}
-            <div className="bg-white rounded-xl shadow-lg p-4 md:p-5 order-2 lg:order-1">
+            <div className="bg-white rounded-xl shadow-lg p-4 md:p-5 order-1 lg:order-1">
               <h2 className="text-base md:text-xl font-bold text-gray-900 mb-2">
                 Ready to Get Started?
               </h2>
@@ -46,7 +46,7 @@ export default function SplashPage() {
               {/* Tally Form Embed */}
               <div className="w-full">
                 <iframe 
-                  data-tally-src="https://tally.so/embed/nPNB0b?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                  data-tally-src="https://tally.so/embed/nPNB0b?alignLeft=1&hideTitle=1&transparentBackground=1" 
                   loading="lazy" 
                   width="100%" 
                   height="200" 
@@ -60,7 +60,7 @@ export default function SplashPage() {
             </div>
 
             {/* Right: Features */}
-            <div className="space-y-2 md:space-y-3 order-1 lg:order-2">
+            <div className="space-y-2 md:space-y-3 order-2 lg:order-2">
               <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 md:mb-3">What You'll Get:</h3>
               
               <div className="flex items-start space-x-2 md:space-x-3 p-2 md:p-3 bg-white rounded-lg shadow-sm">
