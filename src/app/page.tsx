@@ -21,25 +21,25 @@ export default function SplashPage() {
         <div className="max-w-6xl mx-auto w-full">
           
           {/* Top Section: Logo + Hero */}
-          <div className="text-center mb-6">
-            <img src="/logo.png" alt="EMPOWER Logo" className="h-20 md:h-24 w-auto mx-auto mb-4" />
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+          <div className="text-center mb-4">
+            <img src="/logo.png" alt="EMPOWER Logo" className="h-16 md:h-20 w-auto mx-auto mb-3" />
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
               Empower Your Creative Journey
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 mb-4 max-w-3xl mx-auto">
               Join Tobago's premier creative development program and transform your artistic vision into a thriving career.
             </p>
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start mb-4">
             
             {/* Left: Registration Form */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+            <div className="bg-white rounded-xl shadow-lg p-5">
+              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
                 Ready to Get Started?
               </h2>
-              <p className="text-gray-600 mb-4 text-sm">
+              <p className="text-gray-600 mb-3 text-sm">
                 Register now for exclusive access to masterclasses and creative resources.
               </p>
               
@@ -49,7 +49,7 @@ export default function SplashPage() {
                   data-tally-src="https://tally.so/embed/nPNB0b?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
                   loading="lazy" 
                   width="100%" 
-                  height="280" 
+                  height="240" 
                   frameBorder="0" 
                   marginHeight={0} 
                   marginWidth={0} 
@@ -60,75 +60,83 @@ export default function SplashPage() {
             </div>
 
             {/* Right: Features */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Get:</h3>
+            <div className="space-y-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">What You'll Get:</h3>
               
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🎓</span>
+              <div className="flex items-start space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">🎓</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Expert Masterclasses</h4>
-                  <p className="text-gray-600 text-sm">Learn from industry professionals with proven track records</p>
+                  <h4 className="font-semibold text-gray-900 text-sm mb-1">Expert Masterclasses</h4>
+                  <p className="text-gray-600 text-xs">Learn from industry professionals with proven track records</p>
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🚀</span>
+              <div className="flex items-start space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">🚀</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Career Development</h4>
-                  <p className="text-gray-600 text-sm">Build the skills and network needed for creative success</p>
+                  <h4 className="font-semibold text-gray-900 text-sm mb-1">Career Development</h4>
+                  <p className="text-gray-600 text-xs">Build the skills and network needed for creative success</p>
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🌴</span>
+              <div className="flex items-start space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">🌴</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Tobago Community</h4>
-                  <p className="text-gray-600 text-sm">Connect with fellow creatives in our vibrant island community</p>
+                  <h4 className="font-semibold text-gray-900 text-sm mb-1">Tobago Community</h4>
+                  <p className="text-gray-600 text-xs">Connect with fellow creatives in our vibrant island community</p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Topics Preview Section */}
-          <div className="mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-3 text-center">Topics We'll Cover:</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Website Design</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Collect Royalties</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Music Production</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Brand Building</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Social Media</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Copyright Law</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Live Performance</span>
-              </div>
-              <div className="bg-purple-50 px-3 py-2 rounded-lg">
-                <span className="text-sm font-medium text-purple-800">Business Skills</span>
+              {/* Topics Preview Section */}
+              <div className="mt-4">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Topics We'll Cover:</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">🌐</div>
+                    <span className="text-xs font-medium text-purple-800">Website Design</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">💰</div>
+                    <span className="text-xs font-medium text-purple-800">Collect Royalties</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">🎵</div>
+                    <span className="text-xs font-medium text-purple-800">Music Production</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">🏆</div>
+                    <span className="text-xs font-medium text-purple-800">Brand Building</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">📱</div>
+                    <span className="text-xs font-medium text-purple-800">Social Media</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">⚖️</div>
+                    <span className="text-xs font-medium text-purple-800">Copyright Law</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">🎤</div>
+                    <span className="text-xs font-medium text-purple-800">Live Performance</span>
+                  </div>
+                  <div className="bg-purple-50 px-3 py-2 rounded-lg text-center">
+                    <div className="text-lg mb-1">💼</div>
+                    <span className="text-xs font-medium text-purple-800">Business Skills</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Bottom: Quick Stats or CTA */}
-          <div className="text-center mt-4">
-            <p className="text-sm text-gray-500">
+          <div className="text-center mt-6">
+            <p className="text-xs text-gray-500">
               &copy; 2025 EMPOWER - Tobago Creative Development Program • Made in Tobago with ❤️
             </p>
           </div>
