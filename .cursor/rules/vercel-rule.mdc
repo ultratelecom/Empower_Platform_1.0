@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Always build, edit and load to github understanding that this is deployed on Vercel, so you should always test and make sure that it's able to be built and ran on Vercel.
