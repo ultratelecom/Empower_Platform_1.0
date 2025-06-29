@@ -17,7 +17,7 @@ export default function SplashPage() {
       </header>
 
       {/* Main Content - Responsive Layout */}
-      <div className="min-h-screen flex flex-col justify-center px-4 md:px-6 py-20 md:py-8">
+      <div className="min-h-screen flex flex-col justify-center px-4 md:px-6 py-20 md:py-8 lg:justify-start lg:pt-16">
         <div className="max-w-6xl mx-auto w-full">
           
           {/* Top Section: Logo + Hero */}
@@ -49,12 +49,12 @@ export default function SplashPage() {
                   data-tally-src="https://tally.so/embed/nPNB0b?alignLeft=1&hideTitle=1&transparentBackground=1" 
                   loading="lazy" 
                   width="100%" 
-                  height="200" 
+                  height="300" 
                   frameBorder="0" 
                   marginHeight={0} 
                   marginWidth={0} 
                   title="Empower - Tobago Creatives"
-                  className="rounded-lg md:h-60"
+                  className="rounded-lg md:h-96 lg:h-[500px]"
                 />
               </div>
             </div>
