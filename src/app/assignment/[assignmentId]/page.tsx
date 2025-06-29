@@ -6,9 +6,9 @@ import { assignments, getAssignmentById } from '../../../lib/assignmentsData'
 import AssignmentUpload from '../../../components/Assignment/AssignmentUpload'
 
 interface AssignmentPageProps {
-  params: {
+  params: Promise<{
     assignmentId: string
-  }
+  }>
 }
 
 export default async function AssignmentPage({ params }: AssignmentPageProps) {

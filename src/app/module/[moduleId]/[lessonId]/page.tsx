@@ -7,16 +7,17 @@ import LessonIntro from '../../../../components/LessonPage/LessonIntro'
 import LessonAssignment from '../../../../components/LessonPage/LessonAssignment'
 
 interface ModuleLessonPageProps {
-  params: {
+  params: Promise<{
     moduleId: string
     lessonId: string
-  }
+  }>
 }
 
-export default function ModuleLessonPage({ params }: ModuleLessonPageProps) {
-  const module = getModuleById(params.moduleId)
-  const lesson = getLessonById(params.moduleId, params.lessonId)
-  const nextLesson = getNextLesson(params.moduleId, params.lessonId)
+export default async function ModuleLessonPage({ params }: ModuleLessonPageProps) {
+  const { moduleId, lessonId } = await params
+  const module = getModuleById(moduleId)
+  const lesson = getLessonById(moduleId, lessonId)
+  const nextLesson = getNextLesson(moduleId, lessonId)
 
   if (!module || !lesson) {
     return (
